@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Items from './Items';
+import NewItem from './NewItem';
 
 class Application extends Component {
 	constructor(props) {
@@ -21,7 +22,7 @@ class Application extends Component {
 	}
 
 	addItem(item) {
-
+		this.setState({ items: [item, ...this.state.items]});
 	}
 
 	markAsPacked(item) {
@@ -45,6 +46,7 @@ class Application extends Component {
 
 		return(
 			<div className="application">
+				<NewItem onSubmit={this.addItem} />
 				<Items
 					title="Unpacked Items"
 				  items={unpackedItems}
