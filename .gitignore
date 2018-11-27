@@ -2,6 +2,7 @@ node_modules
 
 *.sqlite
 .idea
+.vscode
 out/
 *.log
 
