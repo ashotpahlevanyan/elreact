@@ -2,13 +2,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import Application from './components/Application';
 import { AppContainer } from 'react-hot-loader';
+import database from './database';
 
-const renderApplication = () => {
-	const Application = require('./components/Application').default;
+const renderApplication = async () => {
+	const Application = await require('./components/Application').default;
 
 	render(
 		<AppContainer>
-			<Application />
+			<Application database={database}/>
 		</AppContainer>,
 		document.getElementById('application')
 	);

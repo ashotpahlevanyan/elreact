@@ -7,22 +7,31 @@ class Application extends Component {
 		super(props);
 
 		this.state = {
-			items: [
-				{
-					value: 'Pants',
-					id: Date.now(),
-					packed: false
-				}
-			]
+			items: []
 		};
 
+		this.fetchItems = this.fetchItems.bind(this);
 		this.addItem = this.addItem.bind(this);
 		this.markAsPacked = this.markAsPacked.bind(this);
 		this.markAllAsUnpacked = this.markAllAsUnpacked.bind(this);
 	}
+	componentDidMount() {
+		this.fetchItems();
+	}
+
+	fetchItems() {
+		this.props
+			.database('items')
+			.select()
+			.then(items => { this.setState({items})})
+			.catch(console.error);
+	}
 
 	addItem(item) {
-		this.setState({ items: [item, ...this.state.items]});
+		this.props
+			.database('items')
+			.insert(item)
+			.then(this.fetchItems);
 	}
 
 	markAsPacked(item) {
