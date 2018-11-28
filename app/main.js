@@ -1,5 +1,5 @@
-import { app, BrowserWindow } from 'electron';
-import { enableLiveReload } from 'electron-compile';
+const { app, BrowserWindow } = require('electron');
+const { enableLiveReload } = require('electron-compile');
 
 enableLiveReload({ strategy: 'react-hmr' });
 

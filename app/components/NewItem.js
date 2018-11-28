@@ -23,7 +23,7 @@ class NewItem extends Component {
 
 		event.preventDefault();
 
-		onSubmit({ value, packed: false, id: Date.now() });
+		onSubmit({ value, packed: false });
 		this.setState({ value : ''});
 	}
 
