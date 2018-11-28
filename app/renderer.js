@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import Application from './components/Application';
 import { AppContainer } from 'react-hot-loader';
 
-const renderApplication = async () => {
-	const { default: Application  } = await import('./components/Application');
+const renderApplication = () => {
+	const { default: Application  } = require('./components/Application');
 
 	render(
 		<AppContainer>
