@@ -9,4 +9,15 @@ const database = knex({
 	useNullAsDefault: true
 });
 
+
+database.schema.hasTable('items').then(exists => {
+	if(!exists) {
+		return database.schema.createTable('items', t => {
+			t.increments('id').primary();
+			t.string('value', 100);
+			t.boolean('packed');
+		});
+	}
+});
+
 export default database;
