@@ -4,7 +4,7 @@ import Application from './components/Application';
 import { AppContainer } from 'react-hot-loader';
 
 const renderApplication = () => {
-	const { default: Application  } = require('./components/Application');
+	const Application = require('./components/Application').default;
 
 	render(
 		<AppContainer>

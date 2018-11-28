@@ -58,7 +58,7 @@ class Application extends Component {
 					onCheckOff={this.markAsPacked}
 				/>
 				<button
-					className="full-width"
+					className="button full-width"
 					onClick={this.markAllAsUnpacked}>
 					Mark All As Unpacked
 				</button>

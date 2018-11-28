@@ -40,7 +40,7 @@ class NewItem extends Component {
 				/>
 				<input className="NewItem-submit button" type="submit" />
 			</form>
-		)
+		);
 	}
 }
 
