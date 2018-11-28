@@ -35,17 +35,25 @@ class Application extends Component {
 	}
 
 	markAsPacked(item) {
-		const otherItems = this.state.items.filter(
-			other => other.id !== item.id
-		);
-
-		const updateItem = { ...item, packed: !item.packed };
-		this.setState({ items: [updateItem, ...otherItems]});
+		this.props
+			.database('items')
+			.where('id', '=', item.id)
+			.update({
+				packed: !item.packed
+			})
+			.then(this.fetchItems)
+			.catch(console.error);
 	}
 
 	markAllAsUnpacked() {
-		const items = this.state.items.map(item => ({ ...item, packed:false }));
-		this.setState({ items });
+		this.props
+			.database('items')
+			.select()
+			.update({
+				packed: false
+			})
+			.then(this.fetchItems)
+			.catch(console.error);
 	}
 
 	render() {
