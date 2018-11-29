@@ -16,14 +16,14 @@ export default {
 		});
 	},
 
-	addItem(item) {
+	add(item) {
 		return database.then(db => {
 			const tx = db.transaction('items', 'readwrite');
 			tx.objectStore('items').add(item);
 			return tx.complete;
 		});
 	},
-	updateItem(item) {
+	update(item) {
 		return database.then(db => {
 			const tx = db.transaction('items', 'readwrite');
 			tx.objectStore('items').put(item);
@@ -43,7 +43,7 @@ export default {
 				});
 			});
 	},
-	deleteItem(item) {
+	delete(item) {
 		return database.then(db => {
 			const tx = db.transaction('items', 'readwrite');
 			tx.objectStore('items').delete(item.id);
@@ -52,7 +52,7 @@ export default {
 	},
 	deleteUnpackedItems() {
 		return this.getAll()
-			.then(items => items.map(item => !item.packed))
+			.then(items => items.filter(item => !item.packed))
 			.then(items => {
 				return database.then(db => {
 					const tx = db.transaction('items', 'readwrite');
