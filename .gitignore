@@ -8,3 +8,5 @@ out/
 
 package-json.lock
 yarn.lock
+
+.sass-cache
